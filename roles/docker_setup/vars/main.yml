@@ -1,0 +1,16 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for roles/docker_setup
+required_packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
