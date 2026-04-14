@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
+    ansible.compatibility_mode = "2.0"
     ansible.config_file = "ansible.cfg"
     ansible.inventory_path = "inventory.ini"
     ansible.playbook = "playbooks/docker-installation.yml"
