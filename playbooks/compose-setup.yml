@@ -1,0 +1,28 @@
+---
+- name: Pull node-exporter Docker image
+  hosts: targets
+  vars:
+    path: "/opt/docker/prometheus"
+  tasks:
+    - name: Copy docker-compose.yml
+      ansible.builtin.copy:
+        src: files/targets/
+        dest: "{{ path }}"
+
+    - name: Run docker compose
+      community.docker.docker_compose_v2:
+        project_src: "{{ path }}"
+
+- name: Pull prometheus Docker image
+  hosts: prometheus
+  vars:
+    path: "/opt/docker/prometheus"
+  tasks:
+    - name: Copy docker-compose.yml and prometheus.yml
+      ansible.builtin.copy:
+        src: files/prometheus/
+        dest: "{{ path }}"
+
+    - name: Run docker compose
+      community.docker.docker_compose_v2:
+        project_src: "{{ path }}"
