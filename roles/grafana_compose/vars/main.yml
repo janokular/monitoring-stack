@@ -1,3 +1,4 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # vars file for roles/grafana_compose
+path: /opt/docker/grafana

@@ -2,6 +2,9 @@
 - name: Dockerized monitoring setup for Debian
   hosts: all
   roles:
-    - docker_setup
-    - prometheus_compose
-    - grafana_compose
+    - role: docker_setup
+    
+    - role: prometheus_compose
+
+    - role: grafana_compose
+      when: inventory_hostname in groups['monitoring']

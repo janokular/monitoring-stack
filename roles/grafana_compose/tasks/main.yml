@@ -1,3 +1,16 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/grafana_compose
+- name: "Creating {{ path }} directory"
+  ansible.builtin.file:
+    path: "{{ path }}"
+    state: directory
+
+- name: Copying Grafana docker-compose.yml
+  ansible.builtin.copy:
+    src: docker-compose.yml
+    dest: "{{ path }}"
+
+- name: Running docker compose
+  community.docker.docker_compose_v2:
+    project_src: "{{ path }}"
