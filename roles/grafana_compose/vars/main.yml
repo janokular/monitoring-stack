@@ -2,3 +2,7 @@
 ---
 # vars file for roles/grafana_compose
 path: /opt/docker/grafana
+
+files:
+  - datasources.yml
+  - docker-compose.yml

@@ -8,8 +8,9 @@
 
 - name: Copying Grafana docker-compose.yml
   ansible.builtin.copy:
-    src: docker-compose.yml
+    src: "{{ item }}"
     dest: "{{ path }}"
+  loop: "{{ files }}"
 
 - name: Running docker compose
   community.docker.docker_compose_v2:
